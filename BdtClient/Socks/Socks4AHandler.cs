@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -39,12 +39,12 @@ namespace Bdt.Client.Socks
 				if (Version != 4)
 					return false;
 
-				if ((Buffer[4] != 0) || (Buffer[5] != 0) || (Buffer[6] != 0))
+				if (Buffer[4] != 0 || Buffer[5] != 0 || Buffer[6] != 0)
 					return false;
 
 				if (Command != Socks4BindCommand)
 				{
-					RemotePort = 256*Convert.ToInt32(Buffer[2]) + Convert.ToInt32(Buffer[3]);
+					RemotePort = 256 * Convert.ToInt32(Buffer[2]) + Convert.ToInt32(Buffer[3]);
 					var position = -1;
 					for (var i = 8; i <= Buffer.Length - 1; i++)
 					{
@@ -54,6 +54,7 @@ namespace Bdt.Client.Socks
 						position = i;
 						break;
 					}
+
 					Address = position >= 0 ? new string(Encoding.ASCII.GetChars(Buffer), position + 1, Buffer.Length - position - 2) : string.Empty;
 
 					Reply[1] = Socks4Ok;

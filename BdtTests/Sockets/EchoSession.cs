@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -102,6 +102,7 @@ namespace Bdt.Tests.Sockets
 						{
 							HandleError(ex, true);
 						}
+
 						if (count > 0)
 						{
 							try
@@ -113,12 +114,13 @@ namespace Bdt.Tests.Sockets
 							{
 								HandleError(ex, true);
 							}
+
 							polltime = StatePollingMinTime;
 						}
 					}
 					else
 					{
-						polltime = Convert.ToInt32(Math.Round(StatePollingFactor*polltime));
+						polltime = Convert.ToInt32(Math.Round(StatePollingFactor * polltime));
 						polltime = Math.Min(polltime, StatePollingMaxTime);
 					}
 				}
@@ -126,8 +128,10 @@ namespace Bdt.Tests.Sockets
 				{
 					_mre.Set();
 				}
+
 				adjpolltime = Convert.ToInt32(DateTime.Now.Subtract(startmarker).TotalMilliseconds);
 			}
+
 			Disconnect();
 		}
 

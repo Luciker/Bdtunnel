@@ -1,4 +1,4 @@
-﻿/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+﻿/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -33,7 +33,7 @@ namespace Bdt.Tests.UnitTests
 		{
 			for (var key = 0; key < byte.MaxValue; key++)
 			{
-				for (var datalength = 0; datalength < 1024; datalength = datalength == 0 ? 1 : datalength*2)
+				for (var datalength = 0; datalength < 1024; datalength = datalength == 0 ? 1 : datalength * 2)
 				{
 					var buffer = new byte[datalength];
 					var outbuffer = new byte[datalength];

@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -37,7 +37,7 @@ namespace Bdt.Shared.Configuration
 			foreach (var arg in Args)
 			{
 				var equalIndex = arg.IndexOf(SourceItemEquals, System.StringComparison.Ordinal);
-				if ((equalIndex >= 0) && equalIndex + 1 < arg.Length)
+				if (equalIndex >= 0 && equalIndex + 1 < arg.Length)
 					SetValue(arg.Substring(0, equalIndex), arg.Substring(equalIndex + 1));
 			}
 		}

@@ -1,4 +1,4 @@
-﻿/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+﻿/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -51,7 +51,7 @@ namespace Bdt.Client.Commands
 
 		public override string[] ParametersName
 		{
-			get { return new string[] {}; }
+			get { return new string[] { }; }
 		}
 
 		public void LogObject(ILogger logger, int indent, object obj)
@@ -71,6 +71,7 @@ namespace Bdt.Client.Commands
 					LogObject(logger, indent + 2, item);
 					index++;
 				}
+
 				logger.Log(this, indentstr + "}", ESeverity.INFO);
 			}
 			else

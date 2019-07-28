@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -42,8 +42,8 @@ namespace Bdt.GuiClient.Logs
 
 		public override void Log(object sender, string message, ESeverity severity)
 		{
-			if ((severity == ESeverity.ERROR) && (_guiclient != null) && (_guiclient.MainComponent != null) &&
-			    (_guiclient.MainComponent.NotifyIcon != null))
+			if (severity == ESeverity.ERROR && (_guiclient != null) && (_guiclient.MainComponent != null) &&
+			    _guiclient.MainComponent.NotifyIcon != null)
 				_guiclient.MainComponent.NotifyIcon.ShowBalloonTip(_timeout, _tipTitle, message, ToolTipIcon.Error);
 		}
 

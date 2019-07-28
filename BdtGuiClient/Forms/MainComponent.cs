@@ -1,4 +1,4 @@
-﻿/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+﻿/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -117,7 +117,7 @@ namespace Bdt.GuiClient.Forms
 			System.Threading.ThreadPool.QueueUserWorkItem(StopClient);
 		}
 
-		private void StartClient(Object state)
+		private void StartClient(object state)
 		{
 			try
 			{
@@ -131,6 +131,7 @@ namespace Bdt.GuiClient.Forms
 				_client.Log(e.ToString(), ESeverity.DEBUG);
 				StopClient(null);
 			}
+
 			NotifyContextMenu_Opened(this, EventArgs.Empty);
 		}
 

@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -93,6 +93,7 @@ namespace Bdt.Client.Sockets
 				{
 					Log(ex.Message, ESeverity.ERROR);
 				}
+
 				Log(ex.ToString(), ESeverity.DEBUG);
 			}
 			catch (Exception ex)

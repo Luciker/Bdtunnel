@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -111,7 +111,7 @@ namespace Bdt.Client.Sockets
 
 				try
 				{
-					isConnected = (!(_client.Client.Poll(SocketTestPollingTime, SelectMode.SelectRead) && _client.Client.Available == 0));
+					isConnected = !(_client.Client.Poll(SocketTestPollingTime, SelectMode.SelectRead) && _client.Client.Available == 0);
 					isDataAvailAble = _stream.DataAvailable;
 				}
 				catch (Exception ex)
@@ -132,6 +132,7 @@ namespace Bdt.Client.Sockets
 						{
 							HandleError(ex, true);
 						}
+
 						if (count > 0)
 						{
 							var transBuffer = new byte[count];
@@ -148,7 +149,7 @@ namespace Bdt.Client.Sockets
 					}
 					else
 					{
-						polltime = Convert.ToInt32(Math.Round(StatePollingFactor*polltime));
+						polltime = Convert.ToInt32(Math.Round(StatePollingFactor * polltime));
 						polltime = Math.Min(polltime, StatePollingMaxTime);
 					}
 
@@ -167,6 +168,7 @@ namespace Bdt.Client.Sockets
 							{
 								HandleError(ex, true);
 							}
+
 							polltime = StatePollingMinTime;
 						}
 						else
@@ -179,8 +181,10 @@ namespace Bdt.Client.Sockets
 				{
 					_mre.Set();
 				}
+
 				adjpolltime = Convert.ToInt32(DateTime.Now.Subtract(startmarker).TotalMilliseconds);
 			}
+
 			Disconnect();
 		}
 

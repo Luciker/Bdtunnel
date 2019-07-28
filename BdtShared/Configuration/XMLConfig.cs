@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -44,6 +44,7 @@ namespace Bdt.Shared.Configuration
 						if (attr.Value != string.Empty)
 							SetValue(path + subnode.Name + SourceItemAttribute + attr.Name, attr.Value);
 					}
+
 					if (subnode.InnerText != string.Empty)
 						SetValue(path + subnode.Name, subnode.InnerText);
 				}

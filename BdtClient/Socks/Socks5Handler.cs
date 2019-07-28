@@ -1,4 +1,4 @@
-/* BoutDuTunnel Copyright (c) 2007-2016 Sebastien LEBRETON
+/* BoutDuTunnel Copyright (c) 2006-2019 Sebastien Lebreton
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -63,7 +63,7 @@ namespace Bdt.Client.Socks
 				int numMethods = Buffer[1];
 				var methodAccepted = false;
 
-				if ((numMethods <= 0) || (numMethods != Buffer.Length - 2))
+				if (numMethods <= 0 || numMethods != Buffer.Length - 2)
 				{
 					Log(Strings.SOCKS5_MALFORMED_METHOD_ENUM, ESeverity.WARN);
 					return false;
@@ -71,11 +71,12 @@ namespace Bdt.Client.Socks
 
 				var handshake = new byte[2];
 				var i = 0;
-				while ((i < numMethods) && (!methodAccepted))
+				while (i < numMethods && !methodAccepted)
 				{
 					methodAccepted = (Buffer[i + 2] == Socks5NoAuthenticationRequired);
 					i += 1;
 				}
+
 				handshake[0] = 5; // version
 
 				if (!methodAccepted)
@@ -108,7 +109,7 @@ namespace Bdt.Client.Socks
 						switch (addressType)
 						{
 							case Socks5Ipv4:
-								RemotePort = 256*Convert.ToInt32(request[8]) + Convert.ToInt32(request[9]);
+								RemotePort = 256 * Convert.ToInt32(request[8]) + Convert.ToInt32(request[9]);
 								Address = request[4] + "." + request[5] + "." + request[6] + "." + request[7];
 								Reply[1] = Socks5Ok;
 								Array.Copy(request, 4, Reply, 4, 6);
@@ -117,7 +118,7 @@ namespace Bdt.Client.Socks
 							case Socks5Domain:
 								int length = request[4];
 								Address = new string(System.Text.Encoding.ASCII.GetChars(request), 5, length);
-								RemotePort = 256*Convert.ToInt32(request[length + 5]) + Convert.ToInt32(request[length + 6]);
+								RemotePort = 256 * Convert.ToInt32(request[length + 5]) + Convert.ToInt32(request[length + 6]);
 								Reply[1] = Socks5Ok;
 								Array.Clear(Reply, 4, 6);
 								Log(Strings.SOCKS5_REQUEST_HANDLED, ESeverity.DEBUG);
@@ -129,6 +130,7 @@ namespace Bdt.Client.Socks
 								Log(Strings.SOCKS5_ADDRESS_TYPE_UNKNOWN, ESeverity.WARN);
 								break;
 						}
+
 						break;
 					case Socks5BindCommand:
 						Log(Strings.SOCKS_BIND_UNSUPPORTED, ESeverity.WARN);
